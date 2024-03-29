@@ -1,4 +1,4 @@
-import  { useEffect } from 'react'
+import { useEffect } from 'react'
 import Select from 'react-dropdown-select'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
@@ -21,6 +21,7 @@ const Header = () => {
 
     }).catch((error) => {
       navigate('/error')
+      throw new Error(error);
     });
   }
   const options = [
@@ -57,12 +58,12 @@ const Header = () => {
       }
     });
 
-    return ()=> unsubscribe();
+    return () => unsubscribe();
   }, [])
 
 
   return (
-    <div className='z-10 absolute px-8 py-2 bg-gradient-to-b from-black flex w-full justify-between items-center'>
+    <div className='z-10 fixed px-8 py-2 bg-gradient-to-b from-black flex w-full justify-between items-center '>
 
       <Link to={userInfo ? "/browse" : '/'}>
         <img className='w-24 sm:w-36 md:w-48' src={netflix_logo}

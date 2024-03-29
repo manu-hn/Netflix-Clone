@@ -3,6 +3,7 @@ export const netflix_logo = 'https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-
 
 export const TMDB_API = `https://api.themoviedb.org/3/movie/now_playing?page=2`;
 
+export const TRAILER_API = `https://api.themoviedb.org/3/movie/`
 
 export const API_OPTIONS = {
     method: 'GET',
