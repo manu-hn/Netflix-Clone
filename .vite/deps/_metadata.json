@@ -1,0 +1,85 @@
+{
+  "hash": "e2151fb8",
+  "configHash": "093566dc",
+  "lockfileHash": "bfb7f9f0",
+  "browserHash": "fe6f2e8f",
+  "optimized": {
+    "@reduxjs/toolkit": {
+      "src": "../../node_modules/@reduxjs/toolkit/dist/redux-toolkit.modern.mjs",
+      "file": "@reduxjs_toolkit.js",
+      "fileHash": "a6fff982",
+      "needsInterop": false
+    },
+    "firebase/analytics": {
+      "src": "../../node_modules/firebase/analytics/dist/esm/index.esm.js",
+      "file": "firebase_analytics.js",
+      "fileHash": "907c13b0",
+      "needsInterop": false
+    },
+    "firebase/app": {
+      "src": "../../node_modules/firebase/app/dist/esm/index.esm.js",
+      "file": "firebase_app.js",
+      "fileHash": "6989b42b",
+      "needsInterop": false
+    },
+    "firebase/auth": {
+      "src": "../../node_modules/firebase/auth/dist/esm/index.esm.js",
+      "file": "firebase_auth.js",
+      "fileHash": "0272e9ec",
+      "needsInterop": false
+    },
+    "formik": {
+      "src": "../../node_modules/formik/dist/formik.esm.js",
+      "file": "formik.js",
+      "fileHash": "e56d9e03",
+      "needsInterop": false
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "3da5026e",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "7a07fd06",
+      "needsInterop": true
+    },
+    "react-dropdown-select": {
+      "src": "../../node_modules/react-dropdown-select/lib/index.js",
+      "file": "react-dropdown-select.js",
+      "fileHash": "3e763903",
+      "needsInterop": true
+    },
+    "react-redux": {
+      "src": "../../node_modules/react-redux/dist/react-redux.mjs",
+      "file": "react-redux.js",
+      "fileHash": "47ba13ad",
+      "needsInterop": false
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "abdf64e8",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-DRONRMXM": {
+      "file": "chunk-DRONRMXM.js"
+    },
+    "chunk-4ZSTBHIF": {
+      "file": "chunk-4ZSTBHIF.js"
+    },
+    "chunk-POFG5ZOX": {
+      "file": "chunk-POFG5ZOX.js"
+    },
+    "chunk-HAZNF34R": {
+      "file": "chunk-HAZNF34R.js"
+    },
+    "chunk-WXXH56N5": {
+      "file": "chunk-WXXH56N5.js"
+    }
+  }
+}
