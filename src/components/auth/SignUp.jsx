@@ -48,7 +48,7 @@ const SignUp = () => {
                 // Signed up 
                 const user = userCredential.user;
                 updateProfile(user, {
-                    displayName: displayName, photoURL: "https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
+                    displayName: displayName, photoURL: "https://static.vecteezy.com/system/resources/previews/019/879/186/original/user-icon-on-transparent-background-free-png.png"
                   }).then(() => {
                     // Profile updated!
                  
