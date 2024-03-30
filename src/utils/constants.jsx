@@ -5,6 +5,12 @@ export const TMDB_API = `https://api.themoviedb.org/3/movie/now_playing?page=2`;
 
 export const TRAILER_API = `https://api.themoviedb.org/3/movie/`
 
+export const POPULAR_MOVIES = `https://api.themoviedb.org/3/tv/popular`;
+
+export const TOP_RATED_MOVIES = `https://api.themoviedb.org/3/movie/top_rated`;
+
+export const UPCOMING_MOVIES = `https://api.themoviedb.org/3/movie/upcoming`;
+
 export const API_OPTIONS = {
     method: 'GET',
     headers: {
@@ -12,3 +18,5 @@ export const API_OPTIONS = {
         Authorization: `Bearer ${import.meta.env.VITE_TMDB_ACCESS_TOKEN}`
     }
 };
+
+export const IMAGE_CDN_LINK = `https://image.tmdb.org/t/p/w500`
