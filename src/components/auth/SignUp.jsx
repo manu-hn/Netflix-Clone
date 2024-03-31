@@ -1,11 +1,13 @@
-import  { useState } from 'react'
+import { useState } from 'react'
 // import Header from '../nav/Header';
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useFormik } from 'formik';
 import { auth } from '../../Firebase.jsx';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../../redux/slices/userSlice.jsx';
+import { NETFLIX_BACKGROUND } from '../../utils/constants.jsx';
+import Language from "../../utils/languageConstants.jsx";
 
 const initialValues = {
     username: "",
@@ -38,9 +40,10 @@ const validate = (values) => {
 
 const SignUp = () => {
     const [errorMessage, setErrorMessage] = useState('');
-  
-    const dispatch=useDispatch();
-  
+    const languageKey = useSelector(store => store.config.lang);
+
+    const dispatch = useDispatch();
+
     const handleFormSubmit = async (email, password, displayName) => {
 
         createUserWithEmailAndPassword(auth, email, password)
@@ -49,17 +52,17 @@ const SignUp = () => {
                 const user = userCredential.user;
                 updateProfile(user, {
                     displayName: displayName, photoURL: "https://static.vecteezy.com/system/resources/previews/019/879/186/original/user-icon-on-transparent-background-free-png.png"
-                  }).then(() => {
+                }).then(() => {
                     // Profile updated!
-                 
-                    const {uid, email, displayName, photoURL}=auth.currentUser
-                    dispatch(loginUser({uid, email, displayName, photoURL}))
-                  
-                  }).catch((error) => {
+
+                    const { uid, email, displayName, photoURL } = auth.currentUser
+                    dispatch(loginUser({ uid, email, displayName, photoURL }))
+
+                }).catch((error) => {
                     // An error occurred
-               
+
                     setErrorMessage(error.code.split('/')[1])
-                  });
+                });
 
             })
             .catch((error) => {
@@ -83,16 +86,16 @@ const SignUp = () => {
         <div>
             {/* <Header /> */}
             <div className='absolute' >
-                <img src="https://assets.nflxext.com/ffe/siteui/vlv3/c0b69670-89a3-48ca-877f-45ba7a60c16f/2642e08e-4202-490e-8e93-aff04881ee8a/IN-en-20240212-popsignuptwoweeks-perspective_alpha_website_large.jpg"
+                <img src={NETFLIX_BACKGROUND}
                     alt="background" />
             </div>
 
             <form className='absolute bg-black bg-opacity-85
              w-3/12 py-12 px-12 my-32 mx-auto right-0 text-white left-0 ' onSubmit={formik.handleSubmit}>
-                <h1 className='font-semibold text-2xl py-3'>Sign Up</h1>
+                <h1 className='font-semibold text-2xl py-3'>{Language[languageKey]?.signup}</h1>
                 <div className='w-full '>
                     <input type="text" name="username" className='p-2 m-2 w-full bg-[#333333] '
-                        placeholder='Enter Your name ' id="username"
+                        placeholder={Language[languageKey]?.namePlaceHolder} id="username"
                         value={formik.values.username}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
@@ -107,7 +110,7 @@ const SignUp = () => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         className='p-2 m-2 w-full bg-[#333333] '
-                        placeholder='Enter Email ' id="email" />
+                        placeholder={Language[languageKey]?.emailPlaceHolder} id="email" />
                     <p className='text-red-400 text-xs'>{formik?.errors?.email && formik.touched.email && formik?.errors?.email}</p>
                 </div>
                 <div className='w-full'>
@@ -116,14 +119,14 @@ const SignUp = () => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         className='p-2 m-2 w-full bg-[#333333]'
-                        placeholder='Enter Password ' id="password" />
+                        placeholder={Language[languageKey]?.passwordPlaceHolder} id="password" />
                     <p className='text-red-400 text-xs'>{formik?.errors?.password && formik.touched.password && formik?.errors?.password}</p>
                 </div>
                 <button disabled={formik?.errors?.email || formik?.errors?.password} type='submit'
-                    className='py-2 px-6 mx-2 my-4 w-full bg-[#C11119] rounded-lg disabled:opacity-85 disabled:bg-red-300'>Sign Up</button>
+                    className='py-2 px-6 mx-2 my-4 w-full bg-[#C11119] rounded-lg disabled:opacity-85 disabled:bg-red-300'>{Language[languageKey]?.signup}</button>
                 <p className='text-red-400 text-sm mx-2'>{errorMessage}</p>
-                <p className='mx-2 ' ><span className='text-gray-600'> Already have an account?   </span>
-                    <Link className='cursor-pointer hover:underline mx-2' to={'/login'}> Sign In</Link>
+                <p className='mx-1 ' ><span className='text-gray-600 text-sm'> {Language[languageKey]?.alreadyHaveAnAccount} </span>
+                    <Link className='cursor-pointer hover:underline mx-1 text-sm' to={'/login'}>{Language[languageKey]?.login}</Link>
                 </p>
             </form>
 
