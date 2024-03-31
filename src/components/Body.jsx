@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Login from './auth/Login.jsx';
 import SignUp from "./auth/SignUp.jsx";
 import Browse from './pages/Browse.jsx';

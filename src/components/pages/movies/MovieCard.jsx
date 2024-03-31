@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { IMAGE_CDN_LINK } from "../../../utils/constants";
 
 const MovieCard = ({ movie }) => {
-  console.log(movie)
+  
   return (
     <div className=" w-[11.5rem] mr-4 rounded-lg">
       <div>

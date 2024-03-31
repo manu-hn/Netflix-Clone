@@ -6,13 +6,19 @@ import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { auth } from '../Firebase.jsx';
 import { loginUser, logoutUser } from '../redux/slices/userSlice';
 import { netflix_logo } from '../utils/constants';
-
-
+import { toggleGptSearchView } from '../redux/slices/openAiSlice.jsx';
+import { LANGUAGE_CODES } from '../utils/languageConstants.jsx';
+import { changeLanguage } from '../redux/slices/configSlice.jsx';
+import Language from '../utils/languageConstants.jsx';
 
 
 
 const Header = () => {
   const { userInfo } = useSelector(store => store.user);
+  const languageKey = useSelector(store => store.config.lang);
+  const showGptSearch = useSelector(store => store.openAi.showGptSearch);
+
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -25,7 +31,7 @@ const Header = () => {
       throw new Error(error);
     });
   }
-  
+
 
 
   useEffect(() => {
@@ -48,6 +54,12 @@ const Header = () => {
     return () => unsubscribe();
   }, [])
 
+  const handleSearchButtonClick = () => {
+    dispatch(toggleGptSearchView());
+  }
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value))
+  }
 
   return (
     <div className='z-50 fixed px-8 py-2 bg-gradient-to-b from-black flex w-full justify-between items-center  '>
@@ -56,29 +68,43 @@ const Header = () => {
         <img className='w-24 sm:w-36 md:w-48' src={netflix_logo}
           alt="logo" />
       </Link>
+      <div className='flex items-center'>
+        <select name="" id="" onChange={handleLanguageChange}
+          className='bg-transparent opacity-65 text-white rounded-lg h-9 overflow-y-scroll w-24 border-none outline-none'>
+          {
+            LANGUAGE_CODES.map((lang) => (
+              <option key={lang?.code}
+                className='bg-gray-900 px-4 text-white'
+                value={lang?.code}>{lang?.name}
+              </option>
+            )
+            )
+          }
 
-      {
-        userInfo ? (
-          <div className=' opacity-85 text-black  w-[18rem] flex h-11 rounded-lg items-center'>
-            <div className='flex'>
-              <img src={userInfo?.photoURL} className='w-16 h-10 mix-blend-multiply bg-transparent' alt="" />
+        </select>
+
+        {
+          userInfo ? (
+            <div className=' opacity-85 text-black  w-[24rem] flex h-11 rounded-lg items-center'>
+              <div className='flex items-center'>
+                <img src={userInfo?.photoURL} className='w-16 h-10 mix-blend-multiply bg-transparent' alt="" />
 
 
-              <select name="" id="" className='bg-gray-500 opacity-65 rounded-lg mr-2 w-24 border-none outline-none'>
 
-                <option className='bg-transparent' value="">Profile</option>
-                <option className='bg-transparent' value="">Settings</option>
-              </select>
+              </div>
+              {/* <Link className=''> */}
+              <button className='mx-2 bg-slate-500 rounded-md h-9 text-white px-4 py-1 text-sm'
+                onClick={handleSearchButtonClick}> {showGptSearch ? Language[languageKey].homePage : Language[languageKey].search}</button>
+              {/* </Link> */}
+              <button className='bg-[#C11119] rounded-lg h-9 px-6 text-white' onClick={() => logoutHandler()}>
+                {Language[languageKey].logout}
+              </button>
             </div>
-            <button className='bg-[#C11119] rounded-lg h-10 px-6 text-white' onClick={() => logoutHandler()}>
-              Sign Out
-            </button>
-          </div>
 
-        ) : <Link to={'/login'}>
-          <button className='bg-[#C11119] rounded-lg h-10 px-8 text-white'>Sign In</button> </Link>
-      }
-
+          ) : <Link to={'/login'}>
+            <button className='bg-[#C11119] rounded-lg h-10 px-8 text-white'>{Language[languageKey].login}</button> </Link>
+        }
+      </div>
     </div>
   )
 }
