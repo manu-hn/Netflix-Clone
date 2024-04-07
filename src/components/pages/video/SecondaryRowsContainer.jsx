@@ -13,7 +13,7 @@ const SecondaryRowsContainer = () => {
   return (
     <div className="bg-black text-white ">
 
-      <div className="relative -mt-44 pl-10 z-10">
+      <div className="relative w-full  mt-[10rem] lg:-mt-[14rem] lg:pl-10 md:pl-4 md:-mt-[5rem] sm:mt-[8.5rem]    z-10">
         <MovieList movies={moviesInfo} title={'Now Playing...'} />
         <MovieList movies={upComingMovies} title={'Up Coming'} />
         <MovieList movies={popularMovies} title={'Popular Movies'} />

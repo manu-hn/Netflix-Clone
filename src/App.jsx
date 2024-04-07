@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Body from './components/Body.jsx';
 import { Provider } from 'react-redux';
 import appStore from './redux/store.jsx';
@@ -8,7 +8,7 @@ const App = () => {
   
  
   return (
-    <Provider store={appStore}>
+    <Provider store={appStore} >
       <Body />
     </Provider>
   )
