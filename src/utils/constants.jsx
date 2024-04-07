@@ -12,6 +12,13 @@ export const TOP_RATED_MOVIES = `https://api.themoviedb.org/3/movie/top_rated?re
 
 export const UPCOMING_MOVIES = `https://api.themoviedb.org/3/movie/upcoming`;
 
+export const SEARCH_MOVIE_API_PART_1 = `https://api.themoviedb.org/3/search/movie?query=`
+export const SEARCH_MOVIE_API_PART_2 = `&include_adult=false&language=en-US&page=1`
+
+
+export const MOVIE_INFO = `https://api.themoviedb.org/3/movie/`;
+
+
 export const API_OPTIONS = {
     method: 'GET',
     headers: {
@@ -20,4 +27,37 @@ export const API_OPTIONS = {
     }
 };
 
-export const IMAGE_CDN_LINK = `https://image.tmdb.org/t/p/w500`
+export const IMAGE_CDN_LINK = `https://image.tmdb.org/t/p/w500`;
+
+
+
+export const FOOTER_DATA_ONE = [
+
+    'FAQ',
+    'Investor Relations',
+    'Privacy',
+    'Speed Test'
+]
+
+export const FOOTER_DATA_TWO = [
+    'Help Centre',
+    'Jobs',
+    'Cookie Preferences',
+    'Legal Notices',
+
+]
+
+export const FOOTER_DATA_THREE = [
+
+    'Account',
+    'Ways to Watch',
+    'Corporate Information',
+    'Only on Netflix'
+]
+
+export const FOOTER_DATA_FOUR = [
+
+    'Media Centre',
+    'Terms of Use',
+    'Contact Us'
+]

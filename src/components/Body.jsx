@@ -4,10 +4,11 @@ import SignUp from "./auth/SignUp.jsx";
 import Browse from './pages/Browse.jsx';
 import LayOut from "./LayOut.jsx";
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import MovieInfo from './pages/MovieInfo.jsx';
 
 
 const Body = () => {
-    
+
 
     const rootRouter = createBrowserRouter([
         {
@@ -25,6 +26,10 @@ const Body = () => {
                 {
                     path: '/browse',
                     element: <Browse />
+                },
+                {
+                    path: '/movie-info/:id',
+                    element: <MovieInfo />
                 }
             ]
         },
@@ -32,7 +37,7 @@ const Body = () => {
     ])
 
 
-   
+
     return (
         <div className=''>
             <RouterProvider router={rootRouter} />

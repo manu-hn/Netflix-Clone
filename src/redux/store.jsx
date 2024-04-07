@@ -10,6 +10,7 @@ const appStore = configureStore({
         movies: moviesReducer,
         openAi: openAiReducer,
         config: configReducer,
+       
     }
 })
 
